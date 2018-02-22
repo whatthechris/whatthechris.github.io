@@ -27,7 +27,7 @@ function draw() {
 
 		if ( peakDetect.isDetected ) {
 	    scaleIncrease = 1;
-			stroke(color(255, 255, 255));
+			stroke(color(255, 200, 200));
 
 	  } else {
 	    scaleIncrease *= 0.95;
