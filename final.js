@@ -1,9 +1,10 @@
-var cnv, fft, peakDetect, mic;
+var cnv, soundFile, fft, peakDetect, mic;
 var scaleIncrease = 1;
 var modelcount = 1;
 
 function preload() {
   displayedmodel = loadModel('assets/cia_leaf.obj', true);
+  soundFile = loadSound('assets/lovesick.mp3');
 }
 
 function setup() {
@@ -49,3 +50,16 @@ function draw() {
 	  model(displayedmodel);
 
 }
+
+// toggle play/stop when canvas is clicked
+function mouseClicked() {
+	if (mouseX > 0 && mouseX < width && mouseY > 0 && mouseY < height) {
+	  if (soundFile.isPlaying() ) {
+		soundFile.stop();
+		fft.setInput(mic);
+	  } else {
+		soundFile.play();
+		fft.setInput();
+	  }
+	}
+  }
