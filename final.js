@@ -38,28 +38,24 @@ function draw() {
 	    scaleIncrease *= 0.95;
 			stroke(color(255, 0, 0));
 	  }
-
 	//-------displays the model-------
 		orbitControl();
 		noFill();
 		strokeWeight(1);
 		rotateX(110);
-	  rotateY(frameCount * 0.005);
+	  	rotateY(frameCount * 0.005);
 		scale(3+scaleIncrease,3+scaleIncrease,3+scaleIncrease);
-
-	  model(displayedmodel);
-
+	  	model(displayedmodel);
 }
 
-// toggle play/stop when canvas is clicked
-function mouseClicked() {
-	if (mouseX > 0 && mouseX < width && mouseY > 0 && mouseY < height) {
-	  if (soundFile.isPlaying() ) {
-		soundFile.stop();
-		fft.setInput(mic);
-	  } else {
-		soundFile.play();
-		fft.setInput();
-	  }
+function keyPressed() {
+    if (keyCode === ENTER) {
+      	if (soundFile.isPlaying() ) {
+			soundFile.pause();
+			fft.setInput(mic);
+	  	}else{
+			soundFile.play();
+			fft.setInput();
+      	}
 	}
-  }
+}
